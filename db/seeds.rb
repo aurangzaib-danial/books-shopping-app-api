@@ -10,7 +10,7 @@ TEXT
     author: Faker::Book.author,
     genre: genre,
     description: book_description,
-    price: 9.99 + i
+    price: (9.99 + i).round(2)
     )
 end
 

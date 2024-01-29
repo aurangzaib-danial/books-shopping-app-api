@@ -51,3 +51,4 @@ group :development do
 end
 
 gem 'email_validator'
+gem 'jwt'

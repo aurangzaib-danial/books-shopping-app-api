@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_18_231216) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_27_211515) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +31,23 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_18_231216) do
     t.index ["name"], name: "index_genres_on_name", unique: true
   end
 
+  create_table "order_books", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_order_books_on_book_id"
+    t.index ["order_id"], name: "index_order_books_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.float "total"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
@@ -39,4 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_18_231216) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "order_books", "books"
+  add_foreign_key "order_books", "orders"
+  add_foreign_key "orders", "users"
 end
