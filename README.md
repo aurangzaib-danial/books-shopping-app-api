@@ -1,24 +1,28 @@
-# README
+This is the Rails api that is consumed by my [e-books shopping](https://github.com/aurangzaib-danial/books-shopping-app-frontend) NextJS front-end.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Development Setup
+Before setting up the api server, you need to add AuthJS secret which is how tokens are being encrypted for secure communication between the front-end and the api. Please generate the AuthJS secret by following instructions on this [link](https://github.com/aurangzaib-danial/books-shopping-app-frontend).
 
-Things you may want to cover:
+The AuthJS credential needs to be added as following in your Rails credentials:
 
-* Ruby version
+```yaml
+# other secrets ...
+authjs: your_secret
+```
 
-* System dependencies
+Make sure you have postgresql installed. Now run following commands for setting up the database and adding some dummy data.
 
-* Configuration
+```
+rails db:create
+rails db:schema:load
+rails db:seed
+```
 
-* Database creation
+Now start the api server. The front-end server will now be able to fetch data from your api.
 
-* Database initialization
+```
+rails s
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## License
+This project is released under the MIT License.
