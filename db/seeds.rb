@@ -14,4 +14,6 @@ TEXT
     )
 end
 
-User.create! email: 'aurangzaib.danial@gmail.com', password: '123456'
+if Rails.env.development?
+  User.create! email: 'aurangzaib.danial@gmail.com', password: '123456'
+end
