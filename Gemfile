@@ -32,7 +32,8 @@ gem "bootsnap", require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem "rack-cors"
-#
+
+# Use pg as database adapter
 gem "pg", "~> 1.1"
 
 group :development, :test do
